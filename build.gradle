@@ -1,41 +1,48 @@
+//Download SpringBoot plugin
 buildscript {
-	ext {
-		springBootVersion = '1.4.2.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
+//Apply SpringBoot plugin, along with Eclipse and JAva plugins
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
+//Set jar task info
 jar {
-	baseName = 'springboot-demo'
-	version = '0.0.1-SNAPSHOT'
+    baseName = 'springboot-demo'
+    version = '0.0.1-SNAPSHOT'
 }
+
+//Target Java 1.8
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+//Add repositories
 repositories {
-	mavenCentral()
+    jcenter()
+    mavenCentral()
 }
 
-
+//Add dependencies
 dependencies {
     compile('com.h2database:h2')
 //    compile('org.liquibase:liquibase-core')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-web')
 
-	runtime('org.springframework.boot:spring-boot-actuator-docs')
-	runtime('org.springframework.boot:spring-boot-devtools')
+    runtime('org.springframework.boot:spring-boot-actuator-docs')
+    runtime('org.springframework.boot:spring-boot-devtools')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
