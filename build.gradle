@@ -8,13 +8,30 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework:springloaded:1.2.5.RELEASE")
     }
 }
 
-//Apply SpringBoot plugin, along with Eclipse and JAva plugins
-apply plugin: 'java'
+//Apply SpringBoot plugin, along with Eclipse and Java plugins
 apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
+
+springBoot {
+    mainClass = "com.robertsmieja.exmaple.SpringbootDemoApplication"
+}
+
+bootRun {
+    addResources = true
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
 
 //Set jar task info
 jar {
@@ -38,8 +55,10 @@ dependencies {
 //    compile('org.liquibase:liquibase-core')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-data-rest')
     compile('org.springframework.boot:spring-boot-starter-web')
+
+    compile('org.webjars:jquery:3.1.1-1') //Add jQuery
+    compile('org.webjars:bootstrap:3.3.7-1') //Add BootStrap for UI
 
     runtime('org.springframework.boot:spring-boot-actuator-docs')
     runtime('org.springframework.boot:spring-boot-devtools')
