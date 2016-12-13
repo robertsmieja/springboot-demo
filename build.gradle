@@ -1,4 +1,5 @@
 //Download SpringBoot plugin
+//Add SpringLoaded for HotReloading
 buildscript {
     ext {
         springBootVersion = '1.4.2.RELEASE'
@@ -8,13 +9,28 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.springframework:springloaded:1.2.5.RELEASE'
     }
 }
 
-//Apply SpringBoot plugin, along with Eclipse and JAva plugins
+//Apply SpringBoot plugin, along with Eclipse and Java plugins
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+
+//Monitor resources for hot reloading
+bootRun {
+    addResources = true
+}
+
+//Set IntelliJ's output to match Gradle's output
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
 
 //Set jar task info
 jar {
@@ -34,5 +50,6 @@ repositories {
 
 //Add dependencies
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.boot:spring-boot-devtools") //Add hot reloading and other dev tools
+    compile('org.springframework.boot:spring-boot-starter-web') //Add SpringBoot and SpringWeb
 }
