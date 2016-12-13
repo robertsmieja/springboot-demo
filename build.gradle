@@ -51,9 +51,8 @@ repositories {
 
 //Add dependencies
 dependencies {
-    compile('com.h2database:h2')
-    compile('javax.servlet:jstl:1.2')
-//    compile('org.liquibase:liquibase-core')
+    compile('com.h2database:h2') //For a quick embedded DB
+    compile('javax.servlet:jstl:1.2') //For JSP parsing
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-web')
@@ -66,6 +65,4 @@ dependencies {
 
     runtime("org.springframework.boot:spring-boot-starter-tomcat")
     runtime 'org.apache.tomcat.embed:tomcat-embed-jasper'
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
