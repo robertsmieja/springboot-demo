@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Country</title>
-    <link type="text/css" href="/css/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
 <h2>List of Countries</h2>
@@ -29,8 +29,8 @@
 </table>
 <a href="/country/create" class="btn btn-success">Add Country</a>
 
-<script type="application/javascript" src="webjars/jquery/3.1.1-1/jquery.js"></script>
-<script type="application/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.js"></script>
+<script type="application/javascript" src="/webjars/jquery/3.1.1-1/jquery.js"></script>
+<script type="application/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.js"></script>
 
 </body>
 </html>
