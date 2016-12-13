@@ -19,7 +19,7 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
 springBoot {
-    mainClass = "com.robertsmieja.exmaple.SpringbootDemoApplication"
+    mainClass = "com.robertsmieja.example.SpringbootDemoApplication"
 }
 
 bootRun {
@@ -52,6 +52,7 @@ repositories {
 //Add dependencies
 dependencies {
     compile('com.h2database:h2')
+    compile('javax.servlet:jstl:1.2')
 //    compile('org.liquibase:liquibase-core')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -62,6 +63,9 @@ dependencies {
 
     runtime('org.springframework.boot:spring-boot-actuator-docs')
     runtime('org.springframework.boot:spring-boot-devtools')
+
+    runtime("org.springframework.boot:spring-boot-starter-tomcat")
+    runtime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
